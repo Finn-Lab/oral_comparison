@@ -4,8 +4,8 @@ library(ggplot2)
 # set the working dir
 setwd("../data")
 # read in the data
-soil.counts <- read.delim("tax_lineage_subgingival.tsv", sep="\t", row.names=1, header=T)
-soil.conditions <-scan("subgingival_conditions.txt", what=" ")
+oral.counts <- read.delim("tax_lineage_subgingival.tsv", sep="\t", row.names=1, header=T)
+oral.conditions <-scan("subgingival_conditions.txt", what=" ")
 
 
 # impute zero values and transform the data after the method of Gloor et al;
@@ -16,12 +16,12 @@ soil.conditions <-scan("subgingival_conditions.txt", what=" ")
 # given the actual read count and the observed read count.
 # use a prior of 0.5, corresponding to maximal uncertainty about the read count
 # this returns a set of clr values, one for each mc instance
-d.x <- aldex.clr(reads=soil.counts[,1:ncol(soil.counts)], conds=soil.conditions, mc.samples=128)
+d.x <- aldex.clr(reads=oral.counts[,1:ncol(oral.counts)], conds=oral.conditions, mc.samples=128)
 
 # calculate effect sizes for each mc instance, report the expected value
-d.eff <- aldex.effect(d.x, soil.conditions)
+d.eff <- aldex.effect(d.x, oral.conditions)
 # perform parametric or non-parametric tests for difference
-d.tt <- aldex.ttest(d.x, soil.conditions)
+d.tt <- aldex.ttest(d.x, oral.conditions)
 # concatenate everything into one file
 res.all <- data.frame(d.eff,d.tt)
 
