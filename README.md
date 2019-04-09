@@ -2,7 +2,7 @@
 Data and R scripts for comparison of oral microbiome datasets
 
 <b>R/</b>
-* `all_plaque_pca.R` : Converts taxonomic analysis results from raw counts to clr and performcs PCA and ANOSIM.
+* `all_plaque_pca.R` : Converts taxonomic analysis results from raw counts to clr and performs PCA and ANOSIM.
 * `effect_plot.R` : Converts taxonomic analysis results from raw counts to clr and produces effect plot.
 * `machine_learning.R` : Trains and tests machine learning classifiers.
 
